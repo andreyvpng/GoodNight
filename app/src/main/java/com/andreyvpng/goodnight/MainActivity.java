@@ -3,12 +3,14 @@ package com.andreyvpng.goodnight;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
-import android.view.Menu;
 
 import android.os.Bundle;
-import android.view.MenuInflater;
-import android.view.MenuItem;
+import android.view.View;
 import android.widget.EditText;
+
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
+
+import java.util.Objects;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -16,26 +18,19 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-    }
-
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        MenuInflater inflater = getMenuInflater();
-        inflater.inflate(R.menu.activity_main__menu, menu);
-        return true;
-    }
-
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        if (item.getItemId() == R.id.action_start) {
-            EditText text = findViewById(R.id.activity_main__input_timer);
-            String str = text.getText().toString();
+        Objects.requireNonNull(getSupportActionBar()).hide();
+        FloatingActionButton play_button = findViewById(R.id.activity_main__play_button);
+        play_button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                EditText text = findViewById(R.id.activity_main__input_timer);
+                String str = text.getText().toString();
 
 
-            Intent intent = new Intent(this, NightLightActivity.class);
-            intent.putExtra("TIMER", str);
-            startActivity(intent);
-        }
-        return true;
+                Intent intent = new Intent(getApplicationContext(), NightLightActivity.class);
+                intent.putExtra("TIMER", str);
+                startActivity(intent);
+            }
+        });
     }
 }

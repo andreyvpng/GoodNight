@@ -9,6 +9,8 @@ import android.view.WindowManager;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import java.util.Objects;
+
 public class NightLightActivity extends AppCompatActivity {
 
     @Override
@@ -18,12 +20,9 @@ public class NightLightActivity extends AppCompatActivity {
         getWindow().addFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);
 
         String timer_str = getIntent().getStringExtra("TIMER");
-        int timer_time;
-        if (timer_str != null) {
-            timer_time = Integer.parseInt(timer_str);
-        } else {
-            timer_time = 0;
-        }
+        int timer_time = 0;
+        if (!Objects.equals(timer_str, ""))
+            timer_time = Integer.parseInt(timer_str);;
         new CountDownTimer(1000 * 60 * timer_time, 1000) {
             TextView textView = findViewById(R.id.activity_night_light__textView);
             @SuppressLint("DefaultLocale")
