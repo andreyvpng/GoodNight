@@ -31,25 +31,58 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintGuide_begin="16dp" />
 
-    <LinearLayout
+
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="wrap_content"
+        android:text="@string/app_name"
+        android:textSize="50sp"
+        app:layout_constraintEnd_toStartOf="@+id/activity_main___guideline2"
+        app:layout_constraintStart_toStartOf="@+id/activity_main___guideline1"
+        app:layout_constraintTop_toTopOf="@+id/activity_main___guideline3"
+        android:layout_height="0dp" />
+
+    <EditText
+        android:id="@+id/activity_main__input_timer"
+        android:layout_width="wrap_content"
+        android:layout_height="0dp"
+        android:ems="10"
+        android:hint="minutes of timer"
+        android:inputType="numberSigned"
+        app:layout_constraintEnd_toStartOf="@+id/activity_main___guideline2"
+        app:layout_constraintStart_toStartOf="@+id/activity_main___guideline1"
+        app:layout_constraintTop_toBottomOf="@+id/textView"
+        app:layout_constraintVertical_weight="1"/>
+
+    <RadioGroup
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:orientation="vertical"
-        app:layout_constraintStart_toStartOf="@id/activity_main___guideline1"
-        app:layout_constraintTop_toTopOf="@id/activity_main___guideline3">
+        app:layout_constraintEnd_toStartOf="@+id/activity_main___guideline2"
+        app:layout_constraintStart_toStartOf="@+id/activity_main___guideline1"
+        app:layout_constraintTop_toBottomOf="@+id/activity_main__input_timer"
+        android:id="@+id/activity_main__group_colors"
 
-        <EditText
-            android:id="@+id/activity_main__input_timer"
+        android:checkedButton="@+id/white">
+
+        <RadioButton
+            android:id="@+id/activity_main__white"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:ems="10"
-            android:hint="minutes of timer"
-            android:inputType="numberSigned"
-            tools:layout_editor_absoluteX="31dp"
-            tools:layout_editor_absoluteY="43dp" />
+            android:text="White" />
 
-    </LinearLayout>
+        <RadioButton
+            android:id="@+id/activity_main__green"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Green" />
 
+        <RadioButton
+            android:id="@+id/activity_main__red"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Red" />
+
+    </RadioGroup>
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/activity_main__play_button"
@@ -58,7 +91,6 @@
         android:layout_gravity="end|bottom"
         android:layout_margin="16dp"
         android:src="@drawable/ic_action_play"
-        app:rippleColor="@color/colorAccentSecond"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         tools:ignore="MissingConstraints" />
